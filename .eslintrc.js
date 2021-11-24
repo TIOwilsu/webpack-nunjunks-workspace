@@ -1,0 +1,57 @@
+module.exports = {
+  root: true,
+  env: {
+    node: true,
+    es6: true,
+    browser: 1,
+  },
+  extends: [
+    'eslint:recommended',
+  ],
+  parserOptions: {
+    parser: 'babel-eslint',
+    ecmaVersion: 2020,
+    sourceType: 'module',
+  },
+  rules: {
+    'array-bracket-spacing': ['error', 'never',],
+    'arrow-parens': ['error', 'always',],
+    'no-undef': 0,
+    'no-console': 0,
+    eqeqeq: 0,
+    strict: 0,
+    semi: ['error', 'always',],
+    'eol-last': ['error', 'always',],
+    'comma-dangle': ['error', 'always',],
+    curly: 'error',
+    'no-else-return': 'error',
+    'dot-notation': 'error',
+    'dot-location': 'error',
+    'max-len': [
+      'error',
+      {
+        code: 90,
+        ignoreComments: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+        ignoreTrailingComments: true,
+        ignoreUrls: true,
+        tabWidth: 2,
+      },
+    ],
+    indent: ['error', 2,],
+    'no-var': 'error',
+    'no-unused-vars': [
+      'error',
+      {
+        ignoreRestSiblings: true,
+      },
+    ],
+    'getter-return': 'error',
+    'no-extra-boolean-cast': 'error',
+    'no-irregular-whitespace': 'error',
+    'valid-typeof': 'error',
+    quotes: [2, 'single',],
+    'space-before-function-paren': ['error', 'always',],
+  },
+};
