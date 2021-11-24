@@ -1,7 +1,7 @@
 {
-  "name": "webpack-static-html-pages",
+  "name": "webpack-workspace",
   "version": "1.0.0",
-  "description": "Example of a static website assembled by using webpack v4",
+  "description": "Webpack tempalte developed in v4",
   "keywords": [
     "webpack",
     "static",
