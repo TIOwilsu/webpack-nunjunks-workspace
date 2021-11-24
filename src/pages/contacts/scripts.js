@@ -1,6 +1,5 @@
-import 'normalize.css/normalize.css';
-import '../css/main.scss';
-import './page.scss';
+import '../../partials/layout/scripts';
+import './styles.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded', 'page-contacts',);

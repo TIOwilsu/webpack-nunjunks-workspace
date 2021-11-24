@@ -1,0 +1,16 @@
+@each $type, $weight in $fonts {
+  $font-name: "#{$font}";
+  $name: "#{to-lower-case(#{$font})}-#{$type}";
+  $src: "#{$font-path}#{$name}.";
+  $woff2: "#{$src}woff2";
+  $woff: "#{$src}woff";
+
+  @font-face {
+    font-display: $font-display;
+    font-family: $font-name;
+    src: local($font-name), url($woff2) format("woff2"),
+      url($woff) format("woff");
+    font-style: $font-style;
+    font-weight: $weight;
+  }
+}
