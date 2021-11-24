@@ -12,7 +12,6 @@
   "license": "MIT",
   "dependencies": {
     "inputmask": "^5.0.6",
-    "normalize.css": "^8.0.1",
     "smoothscroll-polyfill": "^0.4.4",
     "swiper": "^7.3.1"
   },
