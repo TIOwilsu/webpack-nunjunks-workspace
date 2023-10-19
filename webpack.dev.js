@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin',);
+const { returnEntries, } = require('./webpack.helpers',);
 
 module.exports = {
 
@@ -8,9 +9,9 @@ module.exports = {
 
   // https://webpack.js.org/concepts/entry-points/#multi-page-application
   entry: {
-    index: './src/page-index/main.js',
-    about: './src/page-about/main.js',
-    contacts: './src/page-contacts/main.js',
+    index: './src/pages/index/scripts.js',
+    about: './src/pages/about/scripts.js',
+    contacts: './src/pages/contacts/scripts.js',
   },
 
   // https://webpack.js.org/configuration/dev-server/
@@ -45,6 +46,18 @@ module.exports = {
         ],
       },
       {
+        test: /\.html$|njk|nunjucks/,
+        use: ['html-loader',{
+          loader: 'nunjucks-html-loader',
+          options : {
+            searchPaths: [
+              ...returnEntries('./src/pages/**/',), 
+              ...returnEntries('./src/pages/**/partials/**',), 
+              ...returnEntries('./src/partials/**/',),],
+          },
+        },],
+      },
+      {
         // Load all images as base64 encoding if they are smaller than 8192 bytes
         test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
@@ -52,7 +65,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               // On development we want to see where the file is coming from, hence we preserve the [path]
-              name: '[path][name].[ext]?hash=[hash:20]',
+              name: 'assets/img/[path][name].[ext]?hash=[hash:20]',
               esModule: false,
               limit: 8192,
             },
@@ -63,8 +76,8 @@ module.exports = {
         test: /\.(eot|ttf|woff|woff2)$/,
         use: [
           {
-            loader: 'file-loader',
-            options: { name: 'fonts/[name].[ext]', },
+            loader: 'url-loader',
+            options: { name: 'assets/fonts/[name].[ext]', },
           },
         ],
       },
@@ -74,19 +87,19 @@ module.exports = {
   // https://webpack.js.org/concepts/plugins/
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/page-index/tmpl.html',
+      template: './src/pages/index/index.html',
       inject: true,
       chunks: ['index',],
       filename: 'index.html',
     },),
     new HtmlWebpackPlugin({
-      template: './src/page-about/tmpl.html',
+      template: './src/pages/about/index.html',
       inject: true,
       chunks: ['about',],
       filename: 'about.html',
     },),
     new HtmlWebpackPlugin({
-      template: './src/page-contacts/tmpl.html',
+      template: './src/pages/contacts/index.html',
       inject: true,
       chunks: ['contacts',],
       filename: 'contacts.html',

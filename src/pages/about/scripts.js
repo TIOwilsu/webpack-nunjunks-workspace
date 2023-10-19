@@ -1,7 +1,6 @@
-import 'normalize.css/normalize.css';
-import '../css/main.scss';
-import './page.scss';
-import img from '../img/unicorn.jpg';
+import '../../partials/layout/scripts';
+import './styles.scss';
+import img from '../../assets/img/unicorn.jpg';
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded', 'page-about',);
